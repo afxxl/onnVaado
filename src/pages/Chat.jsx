@@ -47,7 +47,6 @@ const Chat = () => {
   };
 
   const loadMockMessages = () => {
-    // Mock conversation history
     const mockMessages = [
       {
         id: 1,
@@ -106,7 +105,6 @@ const Chat = () => {
     e.preventDefault();
     if (!message.trim()) return;
 
-    // Add new message
     const newMessage = {
       id: messages.length + 1,
       senderId: "current-user",
@@ -123,7 +121,6 @@ const Chat = () => {
     setMessages([...messages, newMessage]);
     setMessage("");
 
-    // Simulate typing indicator and response
     setTimeout(() => {
       setIsTyping(true);
     }, 1000);
@@ -156,10 +153,10 @@ const Chat = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-4">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading chat...</p>
+          <div className="w-12 h-12 sm:w-16 sm:h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600 text-sm sm:text-base">Loading chat...</p>
         </div>
       </div>
     );
@@ -167,17 +164,17 @@ const Chat = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col">
-      {/* Header */}
+      {/* Responsive Header */}
       <header className="bg-white/90 backdrop-blur-lg border-b border-gray-200 shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <button
                 onClick={() => navigate(`/request/${id}`)}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                className="flex items-center gap-1 sm:gap-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -189,32 +186,33 @@ const Chat = () => {
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-                Back
+                <span className="text-sm sm:text-base">Back</span>
               </button>
             </div>
 
-            {/* Chat Header Info */}
-            <div className="flex items-center gap-3">
+            {/* Chat Header Info - Responsive */}
+            <div className="flex items-center gap-2 sm:gap-3">
               <div className="relative">
                 <img
                   src={request?.author?.avatar}
                   alt={request?.author?.name}
-                  className="w-10 h-10 rounded-full border-2 border-gray-200"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-gray-200"
                 />
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full border-2 border-white"></div>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-gray-900 text-sm sm:text-base truncate max-w-[120px] sm:max-w-none">
                   {request?.author?.name}
                 </h3>
                 <p className="text-xs text-green-600">Online now</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <button className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+            {/* Action Icons - Responsive */}
+            <div className="flex items-center gap-1 sm:gap-3">
+              <button className="p-1.5 sm:p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -227,9 +225,9 @@ const Chat = () => {
                   />
                 </svg>
               </button>
-              <button className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+              <button className="p-1.5 sm:p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -247,22 +245,24 @@ const Chat = () => {
         </div>
       </header>
 
-      {/* Request Info Banner */}
-      <div className="bg-blue-50 border-b border-blue-200 px-4 py-3">
+      {/* Request Info Banner - Responsive */}
+      <div className="bg-blue-50 border-b border-blue-200 px-3 sm:px-4 py-2 sm:py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-sm font-semibold">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xs sm:text-sm font-semibold">
               ⚽
             </div>
-            <div>
-              <p className="font-medium text-blue-900">{request?.title}</p>
-              <p className="text-sm text-blue-600">
+            <div className="min-w-0 flex-1">
+              <p className="font-medium text-blue-900 text-sm sm:text-base truncate">
+                {request?.title}
+              </p>
+              <p className="text-xs sm:text-sm text-blue-600 truncate">
                 📍 {request?.location?.address} • {request?.distance}
               </p>
             </div>
           </div>
-          <div className="text-right">
-            <p className="text-sm font-medium text-blue-900">
+          <div className="text-right ml-2">
+            <p className="text-xs sm:text-sm font-medium text-blue-900 whitespace-nowrap">
               {request?.spotsNeeded - request?.spotsJoined} spots left
             </p>
             <p className="text-xs text-blue-600">{request?.compensation}</p>
@@ -270,35 +270,37 @@ const Chat = () => {
         </div>
       </div>
 
-      {/* Messages Container */}
+      {/* Messages Container - Responsive */}
       <div className="flex-1 overflow-hidden">
         <div className="max-w-4xl mx-auto h-full flex flex-col">
-          {/* Messages List */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          {/* Messages List - Responsive */}
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
             {messages.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex ${msg.isCurrentUser ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`flex gap-3 max-w-xs lg:max-w-md ${msg.isCurrentUser ? "flex-row-reverse" : "flex-row"}`}
+                  className={`flex gap-2 sm:gap-3 max-w-[85%] sm:max-w-xs lg:max-w-md ${msg.isCurrentUser ? "flex-row-reverse" : "flex-row"}`}
                 >
                   <img
                     src={msg.senderAvatar}
                     alt={msg.senderName}
-                    className="w-8 h-8 rounded-full flex-shrink-0"
+                    className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex-shrink-0"
                   />
                   <div
                     className={`${msg.isCurrentUser ? "text-right" : "text-left"}`}
                   >
                     <div
-                      className={`inline-block px-4 py-2 rounded-2xl ${
+                      className={`inline-block px-3 sm:px-4 py-2 rounded-2xl ${
                         msg.isCurrentUser
                           ? "bg-blue-500 text-white"
                           : "bg-white border border-gray-200 text-gray-900"
                       }`}
                     >
-                      <p className="text-sm">{msg.text}</p>
+                      <p className="text-sm sm:text-base break-words">
+                        {msg.text}
+                      </p>
                     </div>
                     <p className="text-xs text-gray-500 mt-1">
                       {msg.timestamp}
@@ -308,16 +310,16 @@ const Chat = () => {
               </div>
             ))}
 
-            {/* Typing Indicator */}
+            {/* Typing Indicator - Responsive */}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="flex gap-3 max-w-xs">
+                <div className="flex gap-2 sm:gap-3 max-w-xs">
                   <img
                     src={request?.author?.avatar}
                     alt={request?.author?.name}
-                    className="w-8 h-8 rounded-full flex-shrink-0"
+                    className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex-shrink-0"
                   />
-                  <div className="bg-white border border-gray-200 rounded-2xl px-4 py-2">
+                  <div className="bg-white border border-gray-200 rounded-2xl px-3 sm:px-4 py-2">
                     <div className="flex gap-1">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                       <div
@@ -337,9 +339,12 @@ const Chat = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Message Input */}
-          <div className="border-t border-gray-200 bg-white p-4">
-            <form onSubmit={handleSendMessage} className="flex items-end gap-4">
+          {/* Message Input - Responsive */}
+          <div className="border-t border-gray-200 bg-white p-3 sm:p-4">
+            <form
+              onSubmit={handleSendMessage}
+              className="flex items-end gap-2 sm:gap-4"
+            >
               <div className="flex-1">
                 <div className="relative">
                   <textarea
@@ -348,18 +353,18 @@ const Chat = () => {
                     onKeyPress={handleKeyPress}
                     placeholder="Type your message..."
                     rows="1"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none max-h-32"
-                    style={{ minHeight: "48px" }}
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none max-h-32 text-sm sm:text-base"
+                    style={{ minHeight: "40px" }}
                   />
 
-                  {/* Emoji and Attachment Buttons */}
-                  <div className="absolute right-3 bottom-3 flex items-center gap-2">
+                  {/* Emoji and Attachment Buttons - Responsive */}
+                  <div className="absolute right-2 sm:right-3 bottom-2 sm:bottom-3 flex items-center gap-1 sm:gap-2">
                     <button
                       type="button"
-                      className="text-gray-400 hover:text-gray-600 transition-colors"
+                      className="text-gray-400 hover:text-gray-600 transition-colors p-1"
                     >
                       <svg
-                        className="w-5 h-5"
+                        className="w-4 h-4 sm:w-5 sm:h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -374,7 +379,7 @@ const Chat = () => {
                     </button>
                     <button
                       type="button"
-                      className="text-gray-400 hover:text-gray-600 transition-colors"
+                      className="text-gray-400 hover:text-gray-600 transition-colors text-sm sm:text-base"
                     >
                       😊
                     </button>
@@ -385,10 +390,10 @@ const Chat = () => {
               <button
                 type="submit"
                 disabled={!message.trim()}
-                className="w-12 h-12 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white rounded-full flex items-center justify-center transition-colors disabled:cursor-not-allowed"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white rounded-full flex items-center justify-center transition-colors disabled:cursor-not-allowed"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -403,8 +408,11 @@ const Chat = () => {
               </button>
             </form>
 
-            <p className="text-xs text-gray-500 mt-2 text-center">
+            <p className="text-xs text-gray-500 mt-2 text-center hidden sm:block">
               Press Enter to send • Shift + Enter for new line
+            </p>
+            <p className="text-xs text-gray-500 mt-2 text-center sm:hidden">
+              Tap to send
             </p>
           </div>
         </div>

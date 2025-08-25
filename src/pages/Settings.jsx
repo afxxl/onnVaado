@@ -60,14 +60,12 @@ const Settings = () => {
 
   const handleSave = async (section) => {
     setLoading(true);
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
     alert(`${section} settings saved successfully!`);
     setLoading(false);
   };
 
   const handleDeleteAccount = () => {
-    // Handle account deletion
     alert("Account deletion functionality would be implemented here");
     setShowDeleteModal(false);
   };
@@ -81,17 +79,17 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      {/* Header */}
+      {/* Responsive Header */}
       <header className="bg-white/90 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <button
                 onClick={() => navigate("/profile")}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                className="flex items-center gap-1 sm:gap-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -103,15 +101,18 @@ const Settings = () => {
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-                Back to Profile
+                <span className="text-sm sm:text-base">Back</span>
+                <span className="hidden sm:inline">to Profile</span>
               </button>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold">OV</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-sm sm:text-base">
+                  OV
+                </span>
               </div>
-              <div>
+              <div className="hidden sm:block">
                 <h1 className="font-bold text-gray-900">onnVaado</h1>
                 <p className="text-xs text-gray-500">Settings</p>
               </div>
@@ -120,51 +121,56 @@ const Settings = () => {
         </div>
       </header>
 
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Settings</h2>
-          <p className="text-gray-600">
+      {/* Responsive Main Content */}
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-8">
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+            Settings
+          </h2>
+          <p className="text-gray-600 text-sm sm:text-base">
             Manage your account preferences and privacy settings
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
+          {/* Responsive Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
-              <nav className="space-y-2">
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6">
+              {/* Mobile: Horizontal scroll, Desktop: Vertical stack */}
+              <nav className="flex lg:flex-col gap-2 lg:space-y-2 overflow-x-auto lg:overflow-x-visible scrollbar-hide">
                 {sections.map((section) => (
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors ${
+                    className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl text-left transition-colors whitespace-nowrap lg:w-full ${
                       activeSection === section.id
                         ? "bg-blue-50 text-blue-700 border border-blue-200"
                         : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                     }`}
                   >
-                    <span className="text-lg">{section.icon}</span>
-                    <span className="font-medium">{section.name}</span>
+                    <span className="text-base sm:text-lg">{section.icon}</span>
+                    <span className="font-medium text-sm sm:text-base">
+                      {section.name}
+                    </span>
                   </button>
                 ))}
               </nav>
             </div>
           </div>
 
-          {/* Main Content */}
+          {/* Responsive Main Content */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
-              {/* Profile Settings */}
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 lg:p-8">
+              {/* Profile Settings - Responsive */}
               {activeSection === "profile" && (
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
                     Profile Information
                   </h3>
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
                           Full Name
                         </label>
                         <input
@@ -172,11 +178,11 @@ const Settings = () => {
                           name="name"
                           value={profileData.name}
                           onChange={handleProfileChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
                           Email Address
                         </label>
                         <input
@@ -184,14 +190,14 @@ const Settings = () => {
                           name="email"
                           value={profileData.email}
                           onChange={handleProfileChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm sm:text-base"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
                           Phone Number
                         </label>
                         <input
@@ -199,11 +205,11 @@ const Settings = () => {
                           name="phone"
                           value={profileData.phone}
                           onChange={handleProfileChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
                           Location
                         </label>
                         <input
@@ -211,13 +217,13 @@ const Settings = () => {
                           name="location"
                           value={profileData.location}
                           onChange={handleProfileChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm sm:text-base"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
                         Bio
                       </label>
                       <textarea
@@ -225,19 +231,19 @@ const Settings = () => {
                         value={profileData.bio}
                         onChange={handleProfileChange}
                         rows={4}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none text-sm sm:text-base"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
                         Availability Status
                       </label>
                       <select
                         name="availability"
                         value={profileData.availability}
                         onChange={handleProfileChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm sm:text-base"
                       >
                         <option value="available">Available</option>
                         <option value="busy">Busy</option>
@@ -248,7 +254,7 @@ const Settings = () => {
                     <button
                       onClick={() => handleSave("Profile")}
                       disabled={loading}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                     >
                       {loading ? "Saving..." : "Save Profile"}
                     </button>
@@ -256,15 +262,15 @@ const Settings = () => {
                 </div>
               )}
 
-              {/* Notification Settings */}
+              {/* Notification Settings - Responsive */}
               {activeSection === "notifications" && (
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
                     Notification Preferences
                   </h3>
-                  <div className="space-y-6">
-                    <div className="space-y-4">
-                      <h4 className="font-semibold text-gray-900">
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="space-y-3 sm:space-y-4">
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
                         App Notifications
                       </h4>
                       <div className="space-y-3">
@@ -275,23 +281,25 @@ const Settings = () => {
                         }).map(([key, label]) => (
                           <label
                             key={key}
-                            className="flex items-center justify-between"
+                            className="flex items-center justify-between py-2"
                           >
-                            <span className="text-gray-700">{label}</span>
+                            <span className="text-gray-700 text-sm sm:text-base pr-4">
+                              {label}
+                            </span>
                             <input
                               type="checkbox"
                               name={key}
                               checked={notificationSettings[key]}
                               onChange={handleNotificationChange}
-                              className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 rounded focus:ring-blue-500 flex-shrink-0"
                             />
                           </label>
                         ))}
                       </div>
                     </div>
 
-                    <div className="space-y-4">
-                      <h4 className="font-semibold text-gray-900">
+                    <div className="space-y-3 sm:space-y-4">
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
                         Communication Channels
                       </h4>
                       <div className="space-y-3">
@@ -302,15 +310,17 @@ const Settings = () => {
                         }).map(([key, label]) => (
                           <label
                             key={key}
-                            className="flex items-center justify-between"
+                            className="flex items-center justify-between py-2"
                           >
-                            <span className="text-gray-700">{label}</span>
+                            <span className="text-gray-700 text-sm sm:text-base pr-4">
+                              {label}
+                            </span>
                             <input
                               type="checkbox"
                               name={key}
                               checked={notificationSettings[key]}
                               onChange={handleNotificationChange}
-                              className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 rounded focus:ring-blue-500 flex-shrink-0"
                             />
                           </label>
                         ))}
@@ -320,7 +330,7 @@ const Settings = () => {
                     <button
                       onClick={() => handleSave("Notification")}
                       disabled={loading}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                     >
                       {loading ? "Saving..." : "Save Notifications"}
                     </button>
@@ -328,22 +338,22 @@ const Settings = () => {
                 </div>
               )}
 
-              {/* Privacy Settings */}
+              {/* Privacy Settings - Responsive */}
               {activeSection === "privacy" && (
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
                     Privacy & Security
                   </h3>
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
                         Profile Visibility
                       </label>
                       <select
                         name="profileVisibility"
                         value={privacySettings.profileVisibility}
                         onChange={handlePrivacyChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm sm:text-base"
                       >
                         <option value="public">Public - Anyone can see</option>
                         <option value="community">
@@ -355,8 +365,8 @@ const Settings = () => {
                       </select>
                     </div>
 
-                    <div className="space-y-4">
-                      <h4 className="font-semibold text-gray-900">
+                    <div className="space-y-3 sm:space-y-4">
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
                         Contact Information
                       </h4>
                       <div className="space-y-3">
@@ -368,15 +378,17 @@ const Settings = () => {
                         }).map(([key, label]) => (
                           <label
                             key={key}
-                            className="flex items-center justify-between"
+                            className="flex items-center justify-between py-2"
                           >
-                            <span className="text-gray-700">{label}</span>
+                            <span className="text-gray-700 text-sm sm:text-base pr-4">
+                              {label}
+                            </span>
                             <input
                               type="checkbox"
                               name={key}
                               checked={privacySettings[key]}
                               onChange={handlePrivacyChange}
-                              className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 rounded focus:ring-blue-500 flex-shrink-0"
                             />
                           </label>
                         ))}
@@ -386,7 +398,7 @@ const Settings = () => {
                     <button
                       onClick={() => handleSave("Privacy")}
                       disabled={loading}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                     >
                       {loading ? "Saving..." : "Save Privacy Settings"}
                     </button>
@@ -394,59 +406,59 @@ const Settings = () => {
                 </div>
               )}
 
-              {/* Account Settings */}
+              {/* Account Settings - Responsive */}
               {activeSection === "account" && (
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
                     Account Management
                   </h3>
-                  <div className="space-y-8">
-                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                      <h4 className="font-semibold text-blue-900 mb-2">
+                  <div className="space-y-6 sm:space-y-8">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg sm:rounded-xl p-4 sm:p-6">
+                      <h4 className="font-semibold text-blue-900 mb-2 text-sm sm:text-base">
                         Change Password
                       </h4>
-                      <p className="text-blue-700 text-sm mb-4">
+                      <p className="text-blue-700 text-xs sm:text-sm mb-3 sm:mb-4">
                         Keep your account secure with a strong password
                       </p>
-                      <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base">
                         Change Password
                       </button>
                     </div>
 
-                    <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-                      <h4 className="font-semibold text-green-900 mb-2">
+                    <div className="bg-green-50 border border-green-200 rounded-lg sm:rounded-xl p-4 sm:p-6">
+                      <h4 className="font-semibold text-green-900 mb-2 text-sm sm:text-base">
                         Two-Factor Authentication
                       </h4>
-                      <p className="text-green-700 text-sm mb-4">
+                      <p className="text-green-700 text-xs sm:text-sm mb-3 sm:mb-4">
                         Add an extra layer of security to your account
                       </p>
-                      <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                      <button className="bg-green-600 hover:bg-green-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base">
                         Enable 2FA
                       </button>
                     </div>
 
-                    <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
-                      <h4 className="font-semibold text-orange-900 mb-2">
+                    <div className="bg-orange-50 border border-orange-200 rounded-lg sm:rounded-xl p-4 sm:p-6">
+                      <h4 className="font-semibold text-orange-900 mb-2 text-sm sm:text-base">
                         Export Your Data
                       </h4>
-                      <p className="text-orange-700 text-sm mb-4">
+                      <p className="text-orange-700 text-xs sm:text-sm mb-3 sm:mb-4">
                         Download a copy of all your data
                       </p>
-                      <button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                      <button className="bg-orange-600 hover:bg-orange-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base">
                         Request Export
                       </button>
                     </div>
 
-                    <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-                      <h4 className="font-semibold text-red-900 mb-2">
+                    <div className="bg-red-50 border border-red-200 rounded-lg sm:rounded-xl p-4 sm:p-6">
+                      <h4 className="font-semibold text-red-900 mb-2 text-sm sm:text-base">
                         Delete Account
                       </h4>
-                      <p className="text-red-700 text-sm mb-4">
+                      <p className="text-red-700 text-xs sm:text-sm mb-3 sm:mb-4">
                         Permanently delete your account and all data
                       </p>
                       <button
                         onClick={() => setShowDeleteModal(true)}
-                        className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                        className="bg-red-600 hover:bg-red-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base"
                       >
                         Delete Account
                       </button>
@@ -459,27 +471,27 @@ const Settings = () => {
         </div>
       </div>
 
-      {/* Delete Confirmation Modal */}
+      {/* Responsive Delete Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-red-900 mb-4">
+          <div className="bg-white rounded-xl sm:rounded-2xl max-w-md w-full mx-4 p-4 sm:p-6">
+            <h3 className="text-lg sm:text-xl font-bold text-red-900 mb-3 sm:mb-4">
               Delete Account
             </h3>
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
               Are you sure you want to delete your account? This action cannot
               be undone and you will lose all your data.
             </p>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setShowDeleteModal(false)}
-                className="flex-1 border border-gray-300 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
+                className="flex-1 border border-gray-300 text-gray-700 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold hover:bg-gray-50 transition-colors text-sm sm:text-base"
               >
                 Cancel
               </button>
               <button
                 onClick={handleDeleteAccount}
-                className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition-colors"
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-colors text-sm sm:text-base"
               >
                 Delete
               </button>

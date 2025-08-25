@@ -6,7 +6,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("overview");
-  const [isOwnProfile, setIsOwnProfile] = useState(true); // Assuming viewing own profile for demo
+  const [isOwnProfile, setIsOwnProfile] = useState(true);
 
   // Mock user data
   const [user, setUser] = useState({
@@ -121,7 +121,6 @@ const Profile = () => {
   ];
 
   useEffect(() => {
-    // Simulate loading
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -130,22 +129,25 @@ const Profile = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-        {/* Loading Header */}
+        {/* Responsive Loading Header */}
         <div className="bg-white/90 backdrop-blur-lg border-b border-gray-200 shadow-sm">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div className="w-24 h-4 bg-gray-200 rounded animate-pulse"></div>
-            <div className="w-20 h-8 bg-gray-200 rounded animate-pulse"></div>
+          <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-8 h-16 flex items-center justify-between">
+            <div className="w-20 h-3 sm:w-24 sm:h-4 bg-gray-200 rounded animate-pulse"></div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-200 rounded-xl animate-pulse"></div>
+              <div className="hidden sm:block w-16 sm:w-20 h-3 sm:h-4 bg-gray-200 rounded animate-pulse"></div>
+            </div>
           </div>
         </div>
 
-        {/* Loading Content */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 animate-pulse">
-            <div className="h-48 bg-gray-200 rounded-t-2xl"></div>
-            <div className="p-8 space-y-4">
-              <div className="w-32 h-8 bg-gray-200 rounded"></div>
-              <div className="w-full h-4 bg-gray-200 rounded"></div>
-              <div className="w-3/4 h-4 bg-gray-200 rounded"></div>
+        {/* Responsive Loading Content */}
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-8">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 animate-pulse">
+            <div className="h-32 sm:h-48 bg-gray-200 rounded-t-xl sm:rounded-t-2xl"></div>
+            <div className="p-4 sm:p-8 space-y-3 sm:space-y-4">
+              <div className="w-24 sm:w-32 h-6 sm:h-8 bg-gray-200 rounded"></div>
+              <div className="w-full h-3 sm:h-4 bg-gray-200 rounded"></div>
+              <div className="w-3/4 h-3 sm:h-4 bg-gray-200 rounded"></div>
             </div>
           </div>
         </div>
@@ -155,17 +157,17 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      {/* Header */}
+      {/* Responsive Header */}
       <header className="bg-white/90 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <button
                 onClick={() => navigate("/")}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                className="flex items-center gap-1 sm:gap-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -177,15 +179,18 @@ const Profile = () => {
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-                Back to Home
+                <span className="text-sm sm:text-base">Back</span>
+                <span className="hidden sm:inline">to Home</span>
               </button>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold">OV</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-sm sm:text-base">
+                  OV
+                </span>
               </div>
-              <div>
+              <div className="hidden sm:block">
                 <h1 className="font-bold text-gray-900">onnVaado</h1>
                 <p className="text-xs text-gray-500">Community First</p>
               </div>
@@ -194,40 +199,40 @@ const Profile = () => {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Profile Header */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden mb-8">
-          {/* Cover Image */}
-          <div className="relative h-48 bg-gradient-to-r from-blue-500 to-purple-600">
+      {/* Responsive Main Content */}
+      <main className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-8">
+        {/* Profile Header - Responsive */}
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 overflow-hidden mb-6 sm:mb-8">
+          {/* Cover Image - Responsive */}
+          <div className="relative h-32 sm:h-48 bg-gradient-to-r from-blue-500 to-purple-600">
             <img
               src={user.coverImage}
               alt="Cover"
               className="w-full h-full object-cover mix-blend-overlay"
             />
             {isOwnProfile && (
-              <button className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-white/30 transition-colors">
-                📷 Edit Cover
+              <button className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/20 backdrop-blur-sm text-white px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-xs sm:text-sm font-medium hover:bg-white/30 transition-colors">
+                📷 <span className="hidden sm:inline">Edit Cover</span>
               </button>
             )}
           </div>
 
-          {/* Profile Info */}
-          <div className="relative px-8 pb-8">
-            {/* Avatar */}
-            <div className="relative -mt-16 mb-4">
+          {/* Profile Info - Responsive */}
+          <div className="relative px-4 sm:px-8 pb-4 sm:pb-8">
+            {/* Avatar - Responsive */}
+            <div className="relative -mt-12 sm:-mt-16 mb-3 sm:mb-4">
               <img
                 src={user.avatar}
                 alt={user.name}
-                className="w-32 h-32 rounded-full border-4 border-white shadow-xl bg-white"
+                className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white shadow-xl bg-white"
               />
-              <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-green-500 rounded-full border-4 border-white flex items-center justify-center">
-                <span className="text-white text-lg">✓</span>
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-green-500 rounded-full border-4 border-white flex items-center justify-center">
+                <span className="text-white text-sm sm:text-lg">✓</span>
               </div>
               {isOwnProfile && (
-                <button className="absolute bottom-2 left-24 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full shadow-lg transition-colors">
+                <button className="absolute bottom-2 left-20 sm:left-24 bg-blue-500 hover:bg-blue-600 text-white p-1.5 sm:p-2 rounded-full shadow-lg transition-colors">
                   <svg
-                    className="w-4 h-4"
+                    className="w-3 h-3 sm:w-4 sm:h-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -249,38 +254,40 @@ const Profile = () => {
               )}
             </div>
 
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-              {/* Left Side - Basic Info */}
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 sm:gap-6">
+              {/* Left Side - Basic Info - Responsive */}
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h1 className="text-3xl font-bold text-gray-900">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-2">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
                     {user.name}
                   </h1>
-                  {user.verified && (
-                    <div className="flex items-center gap-1 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">
-                      <span>✅</span>
-                      Verified
-                    </div>
-                  )}
-                  <div
-                    className={`flex items-center gap-1 px-2 py-1 rounded-full text-sm font-medium ${
-                      user.availability === "Available"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-gray-100 text-gray-800"
-                    }`}
-                  >
+                  <div className="flex items-center gap-2">
+                    {user.verified && (
+                      <div className="flex items-center gap-1 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs sm:text-sm font-medium">
+                        <span>✅</span>
+                        <span className="hidden sm:inline">Verified</span>
+                      </div>
+                    )}
                     <div
-                      className={`w-2 h-2 rounded-full ${
+                      className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs sm:text-sm font-medium ${
                         user.availability === "Available"
-                          ? "bg-green-500 animate-pulse"
-                          : "bg-gray-500"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-gray-100 text-gray-800"
                       }`}
-                    ></div>
-                    {user.availability}
+                    >
+                      <div
+                        className={`w-2 h-2 rounded-full ${
+                          user.availability === "Available"
+                            ? "bg-green-500 animate-pulse"
+                            : "bg-gray-500"
+                        }`}
+                      ></div>
+                      {user.availability}
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm">
                   <div className="flex items-center gap-1">
                     <span className="text-yellow-400">⭐</span>
                     <span className="font-semibold text-gray-900">
@@ -296,30 +303,32 @@ const Profile = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-700 leading-relaxed mb-6">{user.bio}</p>
+                <p className="text-gray-700 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+                  {user.bio}
+                </p>
 
-                {/* Contact Info */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  <div className="flex items-center gap-2 text-gray-600">
+                {/* Contact Info - Responsive */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-sm">
                     <span>📧</span>
-                    <span>{user.email}</span>
+                    <span className="truncate">{user.email}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600">
+                  <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-sm">
                     <span>📱</span>
                     <span>{user.phone}</span>
                   </div>
                 </div>
 
-                {/* Skills */}
-                <div className="mb-6">
-                  <h3 className="font-semibold text-gray-900 mb-3">
+                {/* Skills - Responsive */}
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
                     Skills & Interests
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {user.skills.map((skill, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium"
+                        className="px-2 sm:px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs sm:text-sm font-medium"
                       >
                         {skill}
                       </span>
@@ -327,16 +336,16 @@ const Profile = () => {
                   </div>
                 </div>
 
-                {/* Languages */}
+                {/* Languages - Responsive */}
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-3">
+                  <h3 className="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
                     Languages
                   </h3>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {user.languages.map((language, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                        className="px-2 sm:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs sm:text-sm font-medium"
                       >
                         {language}
                       </span>
@@ -345,45 +354,53 @@ const Profile = () => {
                 </div>
               </div>
 
-              {/* Right Side - Stats & Actions */}
-              <div className="lg:w-80">
-                {/* Stats Cards */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-blue-50 rounded-xl p-4 text-center border border-blue-100">
-                    <div className="text-2xl font-bold text-blue-600">
+              {/* Right Side - Stats & Actions - Responsive */}
+              <div className="w-full lg:w-80">
+                {/* Stats Cards - Responsive */}
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div className="bg-blue-50 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border border-blue-100">
+                    <div className="text-xl sm:text-2xl font-bold text-blue-600">
                       {user.stats.helpsCounted}
                     </div>
-                    <div className="text-sm text-gray-600">Helps Given</div>
+                    <div className="text-xs sm:text-sm text-gray-600">
+                      Helps Given
+                    </div>
                   </div>
-                  <div className="bg-green-50 rounded-xl p-4 text-center border border-green-100">
-                    <div className="text-2xl font-bold text-green-600">
+                  <div className="bg-green-50 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border border-green-100">
+                    <div className="text-xl sm:text-2xl font-bold text-green-600">
                       {user.stats.requestsPosted}
                     </div>
-                    <div className="text-sm text-gray-600">Requests Posted</div>
+                    <div className="text-xs sm:text-sm text-gray-600">
+                      Requests Posted
+                    </div>
                   </div>
-                  <div className="bg-purple-50 rounded-xl p-4 text-center border border-purple-100">
-                    <div className="text-2xl font-bold text-purple-600">
+                  <div className="bg-purple-50 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border border-purple-100">
+                    <div className="text-xl sm:text-2xl font-bold text-purple-600">
                       {user.stats.responseRate}%
                     </div>
-                    <div className="text-sm text-gray-600">Response Rate</div>
+                    <div className="text-xs sm:text-sm text-gray-600">
+                      Response Rate
+                    </div>
                   </div>
-                  <div className="bg-orange-50 rounded-xl p-4 text-center border border-orange-100">
-                    <div className="text-lg font-bold text-orange-600">
+                  <div className="bg-orange-50 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border border-orange-100">
+                    <div className="text-base sm:text-lg font-bold text-orange-600">
                       {user.stats.avgResponseTime}
                     </div>
-                    <div className="text-sm text-gray-600">Avg Response</div>
+                    <div className="text-xs sm:text-sm text-gray-600">
+                      Avg Response
+                    </div>
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="space-y-3 mb-6">
+                {/* Action Buttons - Responsive */}
+                <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                   {isOwnProfile ? (
                     <>
-                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-xl font-semibold transition-colors">
+                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 sm:py-3 px-4 rounded-lg sm:rounded-xl font-semibold transition-colors text-sm sm:text-base">
                         ✏️ Edit Profile
                       </button>
                       <button
-                        className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
+                        className="w-full border border-gray-300 text-gray-700 py-2.5 sm:py-3 px-4 rounded-lg sm:rounded-xl font-semibold hover:bg-gray-50 transition-colors text-sm sm:text-base"
                         onClick={() => navigate("/settings")}
                       >
                         ⚙️ Settings
@@ -391,29 +408,33 @@ const Profile = () => {
                     </>
                   ) : (
                     <>
-                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-xl font-semibold transition-colors">
+                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 sm:py-3 px-4 rounded-lg sm:rounded-xl font-semibold transition-colors text-sm sm:text-base">
                         💬 Send Message
                       </button>
-                      <button className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
+                      <button className="w-full border border-gray-300 text-gray-700 py-2.5 sm:py-3 px-4 rounded-lg sm:rounded-xl font-semibold hover:bg-gray-50 transition-colors text-sm sm:text-base">
                         🔗 Share Profile
                       </button>
                     </>
                   )}
                 </div>
 
-                {/* Badges */}
+                {/* Badges - Responsive */}
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-3">
+                  <h3 className="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
                     Achievements
                   </h3>
                   <div className="grid grid-cols-2 gap-2">
                     {user.badges.map((badge, index) => (
                       <div
                         key={index}
-                        className={`${badge.color} px-3 py-2 rounded-lg text-center text-sm font-medium`}
+                        className={`${badge.color} px-2 sm:px-3 py-2 rounded-lg text-center text-xs sm:text-sm font-medium`}
                       >
-                        <div className="text-lg mb-1">{badge.icon}</div>
-                        <div className="text-xs">{badge.name}</div>
+                        <div className="text-base sm:text-lg mb-1">
+                          {badge.icon}
+                        </div>
+                        <div className="text-xs leading-tight">
+                          {badge.name}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -423,73 +444,77 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-200">
-          {/* Tab Navigation */}
-          <div className="border-b border-gray-200">
-            <div className="flex">
+        {/* Tabs - Responsive */}
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200">
+          {/* Tab Navigation - Responsive */}
+          <div className="border-b border-gray-200 overflow-x-auto">
+            <div className="flex min-w-max sm:min-w-0">
               {[
                 { id: "overview", name: "Overview", icon: "📊" },
-                { id: "activity", name: "Recent Activity", icon: "🕒" },
+                { id: "activity", name: "Activity", icon: "🕒" },
                 { id: "reviews", name: "Reviews", icon: "⭐" },
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-6 py-4 text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                     activeTab === tab.id
                       ? "text-blue-600 border-b-2 border-blue-600"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
                   <span>{tab.icon}</span>
-                  {tab.name}
+                  <span className="hidden xs:inline">{tab.name}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Tab Content */}
-          <div className="p-8">
+          {/* Tab Content - Responsive */}
+          <div className="p-4 sm:p-6 lg:p-8">
             {activeTab === "overview" && (
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
                   Profile Overview
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-4">
+                    <h4 className="font-semibold text-gray-900 mb-3 sm:mb-4 text-sm sm:text-base">
                       Performance Metrics
                     </h4>
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Response Rate</span>
+                        <span className="text-gray-600 text-xs sm:text-sm">
+                          Response Rate
+                        </span>
                         <div className="flex items-center gap-2">
-                          <div className="w-32 h-2 bg-gray-200 rounded-full">
+                          <div className="w-24 sm:w-32 h-2 bg-gray-200 rounded-full">
                             <div
-                              className="w-30 h-2 bg-green-500 rounded-full"
+                              className="h-2 bg-green-500 rounded-full"
                               style={{ width: `${user.stats.responseRate}%` }}
                             ></div>
                           </div>
-                          <span className="text-sm font-medium">
+                          <span className="text-xs sm:text-sm font-medium">
                             {user.stats.responseRate}%
                           </span>
                         </div>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Community Rating</span>
+                        <span className="text-gray-600 text-xs sm:text-sm">
+                          Community Rating
+                        </span>
                         <div className="flex items-center gap-2">
                           <div className="flex">
                             {[1, 2, 3, 4, 5].map((star) => (
                               <span
                                 key={star}
-                                className={`text-lg ${star <= Math.floor(user.rating) ? "text-yellow-400" : "text-gray-300"}`}
+                                className={`text-sm sm:text-lg ${star <= Math.floor(user.rating) ? "text-yellow-400" : "text-gray-300"}`}
                               >
                                 ⭐
                               </span>
                             ))}
                           </div>
-                          <span className="text-sm font-medium">
+                          <span className="text-xs sm:text-sm font-medium">
                             {user.rating}
                           </span>
                         </div>
@@ -497,27 +522,31 @@ const Profile = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-4">
+                    <h4 className="font-semibold text-gray-900 mb-3 sm:mb-4 text-sm sm:text-base">
                       Activity Summary
                     </h4>
                     <div className="space-y-3">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Helps Completed</span>
-                        <span className="font-medium">
+                        <span className="text-gray-600 text-xs sm:text-sm">
+                          Helps Completed
+                        </span>
+                        <span className="font-medium text-xs sm:text-sm">
                           {user.stats.helpsCounted}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Requests Posted</span>
-                        <span className="font-medium">
+                        <span className="text-gray-600 text-xs sm:text-sm">
+                          Requests Posted
+                        </span>
+                        <span className="font-medium text-xs sm:text-sm">
                           {user.stats.requestsPosted}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">
+                        <span className="text-gray-600 text-xs sm:text-sm">
                           Average Response Time
                         </span>
-                        <span className="font-medium">
+                        <span className="font-medium text-xs sm:text-sm">
                           {user.stats.avgResponseTime}
                         </span>
                       </div>
@@ -529,17 +558,17 @@ const Profile = () => {
 
             {activeTab === "activity" && (
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
                   Recent Activity
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {recentActivity.map((activity) => (
                     <div
                       key={activity.id}
-                      className="flex gap-4 p-4 bg-gray-50 rounded-xl"
+                      className="flex gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl"
                     >
                       <div
-                        className={`w-12 h-12 rounded-full flex items-center justify-center text-white ${
+                        className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white ${
                           activity.type === "helped"
                             ? "bg-green-500"
                             : "bg-blue-500"
@@ -548,19 +577,21 @@ const Profile = () => {
                         {activity.type === "helped" ? "🤝" : "📝"}
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900">
+                        <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
                           {activity.title}
                         </h4>
-                        <p className="text-gray-600 text-sm">
+                        <p className="text-gray-600 text-xs sm:text-sm">
                           {activity.description}
                         </p>
-                        <div className="flex items-center gap-4 mt-2">
+                        <div className="flex items-center gap-3 sm:gap-4 mt-2">
                           <span className="text-xs text-gray-500">
                             {activity.date}
                           </span>
                           {activity.rating && (
                             <div className="flex items-center gap-1">
-                              <span className="text-yellow-400">⭐</span>
+                              <span className="text-yellow-400 text-xs">
+                                ⭐
+                              </span>
                               <span className="text-xs text-gray-600">
                                 {activity.rating}/5
                               </span>
@@ -581,28 +612,28 @@ const Profile = () => {
 
             {activeTab === "reviews" && (
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
                   Community Reviews
                 </h3>
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {reviews.map((review) => (
                     <div
                       key={review.id}
-                      className="border-b border-gray-100 pb-6 last:border-b-0"
+                      className="border-b border-gray-100 pb-4 sm:pb-6 last:border-b-0"
                     >
-                      <div className="flex items-start gap-4">
+                      <div className="flex items-start gap-3 sm:gap-4">
                         <img
                           src={review.avatar}
                           alt={review.reviewer}
-                          className="w-12 h-12 rounded-full"
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
                         />
                         <div className="flex-1">
-                          <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-start justify-between mb-2">
                             <div>
-                              <h4 className="font-semibold text-gray-900">
+                              <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
                                 {review.reviewer}
                               </h4>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-xs sm:text-sm text-gray-500">
                                 {review.requestTitle}
                               </p>
                             </div>
@@ -611,7 +642,7 @@ const Profile = () => {
                                 {[1, 2, 3, 4, 5].map((star) => (
                                   <span
                                     key={star}
-                                    className={`text-sm ${star <= review.rating ? "text-yellow-400" : "text-gray-300"}`}
+                                    className={`text-xs sm:text-sm ${star <= review.rating ? "text-yellow-400" : "text-gray-300"}`}
                                   >
                                     ⭐
                                   </span>
@@ -622,7 +653,9 @@ const Profile = () => {
                               </span>
                             </div>
                           </div>
-                          <p className="text-gray-700">{review.comment}</p>
+                          <p className="text-gray-700 text-xs sm:text-sm">
+                            {review.comment}
+                          </p>
                         </div>
                       </div>
                     </div>
